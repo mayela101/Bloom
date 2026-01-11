@@ -7,7 +7,7 @@ import { useCompletedWeeks } from '../hooks/useCompletedWeeks';
 import { Mood } from '../types';
 import { getflutterMessage, getStageFromEntries } from '../utils/butterfly';
 import { generateJournalPrompt } from '../lib/claude';
-import { ArrowLeft, Send, Sparkles, RefreshCw } from 'lucide-react';
+import { ArrowLeft, Send, RefreshCw } from 'lucide-react';
 import { startOfDay } from 'date-fns';
 import styles from './NewEntry.module.css';
 
