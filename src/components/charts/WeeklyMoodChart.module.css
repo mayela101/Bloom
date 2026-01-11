@@ -1,0 +1,56 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+}
+
+.chartArea {
+  position: relative;
+  height: 120px;
+  width: 100%;
+  border-radius: 0.75rem;
+  overflow: visible;
+}
+
+/* Center line (neutral = 0) */
+.centerLine {
+  position: absolute;
+  top: 50%;
+  left:  0;
+  right:  0;
+  height: 1px;
+  background:  var(--lavender);
+  opacity: 0.4;
+}
+
+.svg {
+  position:  absolute;
+  top: 0;
+  left: 0;
+  width:  100%;
+  height: 100%;
+}
+
+/* Day labels */
+.labels {
+  display: flex;
+  justify-content: space-between;
+  padding:  0 1rem;
+}
+
+.label {
+  font-size:  0.75rem;
+  color: var(--text-secondary);
+  text-align: center;
+  flex:  1;
+}
+
+.labelToday {
+  font-weight: 700;
+  color:  var(--sage);
+}
+
+.labelFuture {
+  opacity: 0.4;
+}

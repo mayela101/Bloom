@@ -1,0 +1,28 @@
+.butterfly {
+  transition: transform 0.3s ease;
+  filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.2));
+}
+
+.butterfly:hover {
+  transform: scale(1.2);
+}
+
+.wing {
+  transform-origin: center;
+  animation:  flutter 2s ease-in-out infinite;
+}
+
+.wingLower {
+  transform-origin: center;
+  animation:  flutter 2s ease-in-out infinite;
+  animation-delay: 0.1s;
+}
+
+@keyframes flutter {
+  0%, 100% {
+    transform: scaleX(1);
+  }
+  50% {
+    transform:  scaleX(0.95);
+  }
+}

@@ -1,0 +1,311 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-bottom: 1rem;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  padding-top: 1rem;
+}
+
+.avatar {
+  width:  5rem;
+  height: 5rem;
+  background: var(--lavender);
+  border-radius: 50%;
+  margin:  0 auto 1rem;
+  display: flex;
+  align-items:  center;
+  justify-content: center;
+}
+
+.avatarIcon {
+  color:  var(--sage);
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.subtitle {
+  color: #6b7280;
+}
+
+/* Settings */
+.settingsList {
+  display: flex;
+  flex-direction: column;
+  gap:  1rem;
+}
+
+.settingCard {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--lavender);
+}
+
+.settingHeader {
+  display:  flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.settingIcon {
+  color:  var(--sage);
+}
+
+.settingTitle {
+  font-weight: 500;
+  color:  #1f2937;
+}
+
+.settingDescription {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+/* Goal Buttons */
+.goalButtons {
+  display:  flex;
+  gap: 0.5rem;
+}
+
+.goalButton {
+  flex: 1;
+  padding: 0.5rem;
+  border-radius: 0.75rem;
+  border: none;
+  cursor:  pointer;
+  transition: all 0.3s ease;
+  background: rgba(230, 230, 250, 0.3);
+}
+
+.goalButton:hover {
+  background: var(--lavender);
+}
+
+.goalButtonActive {
+  background:  var(--sage);
+  color: white;
+}
+
+/* Toggle Setting */
+.toggleSetting {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.toggleInfo {
+  display:  flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.toggle {
+  width:  3.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  position: relative;
+}
+
+.toggleOff {
+  background: #d1d5db;
+}
+
+.toggleOn {
+  background: var(--sage);
+}
+
+.toggleKnob {
+  width: 1.50rem;
+  height: 1.50rem;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top:  50%;
+  transform: translateY(-50%);
+  transition: left 0.3s ease;
+}
+
+.toggleKnobOff {
+  left: 0. 125rem;
+}
+
+.toggleKnobOn {
+  left: 1.625rem;
+}
+
+/* Privacy Card */
+.privacyContent {
+  display:  flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding-top: 1rem;
+}
+
+.version {
+  font-size: 0.875rem;
+  color: #9ca3af;
+}
+
+.credit {
+  font-size: 0.75rem;
+  color: #d1d5db;
+  margin-top: 0.25rem;
+}
+
+/* Display Name Section */
+.displayNameSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.displayNameInput {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--lavender);
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.displayNameInput:focus {
+  border-color: var(--sage);
+  box-shadow: 0 0 0 3px rgba(157, 193, 131, 0.2);
+}
+
+.displayNameActions {
+  display:  flex;
+  gap: 0.5rem;
+}
+
+.saveButton {
+  flex: 1;
+  padding: 0.625rem 1rem;
+  background:  var(--sage);
+  color: white;
+  border:  none;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor:  pointer;
+  transition: all 0.3s ease;
+}
+
+.saveButton:hover:not(:disabled) {
+  box-shadow: 0 2px 8px rgba(157, 193, 131, 0.4);
+}
+
+.saveButton:disabled {
+  opacity: 0.6;
+  cursor:  not-allowed;
+}
+
+.cancelButton {
+  padding: 0.625rem 1rem;
+  background: transparent;
+  color:  #6b7280;
+  border: 1px solid #d1d5db;
+  border-radius:  0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor:  pointer;
+  transition: all 0.3s ease;
+}
+
+.cancelButton:hover {
+  background: #f3f4f6;
+}
+
+.editButton {
+  padding: 0.5rem 0.75rem;
+  background: var(--lavender);
+  color: #374151;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.editButton:hover {
+  background: #ddd6fe;
+}
+
+.displayNameRow {
+  display:  flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.displayNameValue {
+  font-size: 1rem;
+  color: #374151;
+}
+
+.displayNamePlaceholder {
+  font-size: 1rem;
+  color: #9ca3af;
+  font-style: italic;
+}
+
+/* Success/Error Messages */
+.successMessage {
+  background: #f0fdf4;
+  color: #16a34a;
+  padding: 0.5rem 0.75rem;
+  border-radius:  0.5rem;
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+.errorMessage {
+  background: #fef2f2;
+  color: #dc2626;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+/* Sign Out Button */
+.signOutButton {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+  border-radius: 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor:  pointer;
+  transition: all 0.3s ease;
+}
+
+.signOutButton:hover {
+  background: #fee2e2;
+}

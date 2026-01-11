@@ -1,0 +1,367 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-bottom: 1rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  color:  #1f2937;
+}
+
+.analyzeButton {
+  padding: 0.5rem 1rem;
+  background:  var(--sage);
+  color: white;
+  border:  none;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.analyzeButton:hover:not(:disabled) {
+  box-shadow: 0 2px 8px rgba(157, 193, 131, 0.4);
+}
+
+.analyzeButton:disabled {
+  opacity:  0.6;
+  cursor:  not-allowed;
+}
+
+/* Cards */
+.card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  border: 1px solid var(--lavender);
+}
+
+.cardTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items:  center;
+  gap: 0.5rem;
+}
+
+/* Mood Overview */
+.moodOverview {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.moodStat {
+  text-align: center;
+  padding: 1rem;
+  border-radius: 0.75rem;
+}
+
+.moodStatPositive {
+  background: rgba(34, 197, 94, 0.1);
+}
+
+.moodStatNeutral {
+  background: rgba(156, 163, 175, 0.1);
+}
+
+.moodStatNegative {
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.moodEmoji {
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.moodCount {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color:  #1f2937;
+}
+
+.moodLabel {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+/* Average Mood */
+.averageMood {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.moodMeter {
+  flex: 1;
+  height: 0.75rem;
+  background: linear-gradient(to right, #ef4444, #fbbf24, #22c55e);
+  border-radius:  9999px;
+  position: relative;
+}
+
+.moodIndicator {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 1. 25rem;
+  height: 1.25rem;
+  background: white;
+  border:  3px solid #1f2937;
+  border-radius:  50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.moodValue {
+  font-size: 1.25rem;
+  font-weight:  700;
+  color: #1f2937;
+  min-width: 4rem;
+  text-align: right;
+}
+
+/* Themes */
+.themesList {
+  display:  flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.themeTag {
+  display: flex;
+  align-items: center;
+  gap:  0.5rem;
+  padding: 0.5rem 0. 75rem;
+  background: var(--lavender);
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  color: #374151;
+}
+
+.themeCount {
+  background: white;
+  padding:  0.125rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* Weekly Chart */
+.weeklyChart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 120px;
+  gap: 0.5rem;
+  padding-top: 1rem;
+}
+
+.dayColumn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dayBar {
+  width:  100%;
+  max-width: 2rem;
+  border-radius: 0.25rem 0.25rem 0 0;
+  transition: all 0.3s ease;
+}
+
+.dayBarPositive {
+  background: linear-gradient(to top, #86efac, #22c55e);
+}
+
+.dayBarNeutral {
+  background: linear-gradient(to top, #d1d5db, #9ca3af);
+}
+
+.dayBarNegative {
+  background: linear-gradient(to top, #fca5a5, #ef4444);
+}
+
+.dayBarEmpty {
+  background:  #e5e7eb;
+  min-height: 4px;
+}
+
+.dayLabel {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+/* Empty State */
+.emptyState {
+  text-align: center;
+  padding: 2rem;
+  color: #6b7280;
+}
+
+.emptyIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.emptyText {
+  margin-bottom: 0.5rem;
+}
+
+.emptySubtext {
+  font-size: 0.875rem;
+  color: #9ca3af;
+}
+
+/* Progress */
+.progressBar {
+  width: 100%;
+  height: 0.5rem;
+  background: #e5e7eb;
+  border-radius: 9999px;
+  overflow: hidden;
+  margin-top: 0.5rem;
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--sage);
+  transition: width 0.3s ease;
+}
+
+.progressText {
+  font-size: 0.75rem;
+  color: #6b7280;
+  text-align: center;
+  margin-top: 0.25rem;
+}
+
+.butterflyCount {
+  margin-left: auto;
+  font-size: 0.875rem;
+  background: var(--lavender);
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+}
+
+/* Flutter's Insights */
+.insightsLoading {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  text-align: center;
+  padding: 1rem;
+  margin:  0;
+}
+
+.flutterInsights {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.moodTrendBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.75rem;
+  border-radius: 2rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  width: fit-content;
+}
+
+.moodTrendBadge.improving {
+  background:  #dcfce7;
+  color: #16a34a;
+}
+
+.moodTrendBadge.stable {
+  background:  #dbeafe;
+  color: #2563eb;
+}
+
+.moodTrendBadge.declining {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.moodTrendBadge.mixed {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.insightSummary {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color:  var(--text-primary);
+  margin: 0;
+}
+
+
+
+.suggestionBox p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--text-primary);
+}
+
+.chatLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--sage);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  padding-top: 0.25rem;
+}
+
+.chatLink:hover {
+  text-decoration: underline;
+}
+
+.weekLabel {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin:  0.25rem 0 0;
+  font-weight: bold;
+}
+
+.dayBarFuture {
+  background:  var(--lavender);
+  opacity: 0.3;
+}
+
+.dayLabelToday {
+  font-weight: 700;
+  color:  var(--sage);
+}
+
+.subHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.weekTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color:  #1f2937;
+}

@@ -1,0 +1,215 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap:  1.5rem;
+}
+
+/* Header */
+.header {
+  display:  flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.backButton {
+  padding: 0.5rem;
+  border-radius: 0.75rem;
+  background: none;
+  border:  none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.backButton:hover {
+  background: rgba(230, 230, 250, 0.5);
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color:  #1f2937;
+}
+
+/* flutter Prompt */
+.promptCard {
+  background:  rgba(230, 230, 250, 0.3);
+  border-radius: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--lavender);
+}
+
+.promptContent {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.promptIcon {
+  color:  var(--sage);
+  flex-shrink: 0;
+  margin-top: 0.25rem;
+}
+
+.promptHeader {
+  display:  flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.promptLabel {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color:  var(--sage);
+}
+
+.refreshButton {
+  padding: 0.25rem;
+  background: none;
+  border:  none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.refreshButton:hover {
+  background: var(--lavender);
+}
+
+.refreshButton:disabled {
+  opacity: 0.5;
+  cursor:  not-allowed;
+}
+
+.spinning {
+  animation:  spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform:  rotate(360deg); }
+}
+
+.promptText {
+  color:  #374151;
+  margin-top:  0.25rem;
+}
+
+.promptLoading {
+  color: #9ca3af;
+  font-style: italic;
+}
+
+/* Mood Selector */
+.moodSection {
+  display:  flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.moodLabel {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.moodOptions {
+  display:  flex;
+  gap: 0.5rem;
+}
+
+.moodButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem 0.75rem;
+  border-radius:  0.75rem;
+  border: none;
+  cursor:  pointer;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.moodButton:hover {
+  background:  rgba(230, 230, 250, 0.5);
+}
+
+.moodButtonActive {
+  background:  var(--sage);
+  color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.moodEmoji {
+  font-size: 1.25rem;
+}
+
+.moodText {
+  font-size: 0.75rem;
+}
+
+/* Text Area */
+.textArea {
+  width: 100%;
+  height: 16rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  border-radius: 1rem;
+  border: 1px solid var(--lavender);
+  resize: none;
+  font-family: inherit;
+  font-size: 1rem;
+  color: #1f2937;
+  outline: none;
+  transition: box-shadow 0.3s ease;
+}
+
+.textArea:focus {
+  box-shadow: 0 0 0 2px var(--sage);
+}
+
+.textArea::placeholder {
+  color: #9ca3af;
+}
+
+/* Submit Button */
+.submitButton {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: var(--sage);
+  color: white;
+  border:  none;
+  border-radius: 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor:  pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.submitButton:hover:not(:disabled) {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.submitButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.noticeCard {
+  background: var(--lavender);
+  border-radius: 1rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.noticeCard p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #6b7280;
+  text-align: center;
+}

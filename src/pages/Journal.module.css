@@ -1,0 +1,127 @@
+.container {
+  display:  flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-bottom:1rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  color:  #1f2937;
+}
+
+.newButton {
+  display:  flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--sage);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.newButton:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Empty State */
+.emptyState {
+  text-align: center;
+  align-items: center;
+  padding:  4rem 0;
+}
+
+.emptyIcon {
+  color: #9ca3af;
+  margin-bottom: 1rem;
+}
+
+.emptyTitle {
+  color: #6b7280;
+}
+
+.emptySubtitle {
+  color: #9ca3af;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.emptyButton {
+  display:  inline-block;
+  margin-top: 1rem;
+  background: var(--sage);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.emptyButton:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Entry List */
+.entriesList {
+  display:  flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.entryCard {
+  background:  rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--lavender);
+}
+
+.entryHeader {
+  display:  flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.entryDate {
+  font-size: 0.875rem;
+  color: #9ca3af;
+}
+
+.entryMood {
+  font-size: 0.75rem;
+  background: var(--lavender);
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+}
+
+.entryContent {
+  color:  #374151;
+  white-space: pre-wrap;
+}
+
+/* Loading */
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 16rem;
+  color: var(--sage);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}

@@ -1,0 +1,56 @@
+.container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content:  center;
+  width: 180px;
+  height: 180px;
+}
+
+.ring {
+  transform: rotate(-90deg);
+}
+
+.backgroundCircle {
+  fill: none;
+  stroke:  var(--lavender);
+}
+
+.progressCircle {
+  fill: none;
+  stroke:  var(--sage);
+  transition: stroke-dashoffset 0.5s ease;
+  filter: drop-shadow(0 0 6px rgba(157, 193, 131, 0.4));
+}
+
+.centerContent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stageEmoji {
+  font-size: 3.5rem;
+  filter: drop-shadow(0 0 10px rgba(230, 230, 250, 0.6));
+  animation: float 3s ease-in-out infinite;
+}
+
+.emptyState {
+  font-size: 4rem;
+  color: var(--lavender);
+  opacity: 0.5;
+  animation: none;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
