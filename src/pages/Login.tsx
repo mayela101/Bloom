@@ -41,6 +41,7 @@ export function Login() {
         <div className={styles.header}>
           <div className={styles.logo}>🦋</div>
           <h1 className={styles. title}>Welcome</h1>
+            <p className={styles.subtitle}>Start blooming today!</p>
         </div>
 
         {error && <div className={styles. error}>{error}</div>}
