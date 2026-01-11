@@ -116,21 +116,20 @@ export function NewEntry() {
       {/* Already journaled today notice */}
       {alreadyJournaledToday && (
         <div className={styles.noticeCard}>
-          <p>✨ You've already journaled today!  Feel free to write more, but your next stage progress will be tomorrow. </p>
+          <p>You've already journaled today!  Feel free to write more, but your next stage progress will be tomorrow. </p>
         </div>
       )}
 
       {/* Flutter's Prompt */}
-      <div className={styles. promptCard}>
+      <div className={styles.promptCard}>
         <div className={styles.promptContent}>
-          <Sparkles className={styles.promptIcon} size={20} />
           <div style={{ flex: 1 }}>
             <div className={styles.promptHeader}>
               <p className={styles.promptLabel}>Flutter suggests:</p>
               <button
                 onClick={loadPrompt}
                 disabled={loadingPrompt}
-                className={styles. refreshButton}
+                className={styles.refreshButton}
                 title="Get new prompt"
               >
                 <RefreshCw size={16} className={loadingPrompt ? styles.spinning : ''} />
