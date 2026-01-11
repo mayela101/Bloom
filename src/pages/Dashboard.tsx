@@ -1,5 +1,5 @@
-import { useMemo, useEffect } from 'react';
-import { BarChart3, TrendingUp, TrendingDown, Minus, Shuffle, Sparkles, TreeDeciduous, MessageCircle } from 'lucide-react';
+import { useState, useMemo, useEffect } from 'react';
+import { BarChart3, TrendingUp, TrendingDown, Minus, Shuffle, Sparkles, TreeDeciduous, MessageCircle, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useJournalEntries } from '../hooks/useJournalEntries';
 import { userAnalyzeEntries } from '../hooks/userAnalyzeEntries';
@@ -7,30 +7,37 @@ import { useCompletedWeeks } from '../hooks/useCompletedWeeks';
 import { useProfile } from '../hooks/userProfile';
 import { useInsights } from '../hooks/useInsights';
 import { ButterflyTree } from '../components/butterfly/ButterflyTree';
-import { format, startOfDay, startOfWeek, endOfWeek, isWithinInterval } from 'date-fns';
+import { format, startOfDay, startOfWeek, endOfWeek, isWithinInterval, addWeeks } from 'date-fns';
 import styles from './Dashboard.module.css';
 import { WeeklyMoodChart } from '../components/charts/WeeklyMoodChart';
 
 export function Dashboard() {
+  const [weekOffset, setWeekOffset] = useState(0); // 0 = this week, -1 = last week, etc.
+  
   const { entries, refresh } = useJournalEntries();
   const { profile } = useProfile();
   const weeklyGoal = profile?.weekly_goal || 4;
   const { analyzeAllEntries, analyzing, progress } = userAnalyzeEntries();
   const { completedWeeks, totalButterflies, syncCompletedWeeks } = useCompletedWeeks();
 
-  // Filter entries 
-  const currentWeekEntries = useMemo(() => {
+  // Calculate week range based on offset
+  const { weekStart, weekEnd } = useMemo(() => {
     const now = new Date();
-    const weekStart = startOfWeek(now, { weekStartsOn: 0 }); // Sunday
-    const weekEnd = endOfWeek(now, { weekStartsOn:  0 });
+    const baseWeekStart = startOfWeek(now, { weekStartsOn: 0 });
+    const weekStart = addWeeks(baseWeekStart, weekOffset);
+    const weekEnd = endOfWeek(weekStart, { weekStartsOn: 0 });
+    return { weekStart, weekEnd };
+  }, [weekOffset]);
 
+  // Filter entries for selected week
+  const currentWeekEntries = useMemo(() => {
     return entries.filter(entry =>
       isWithinInterval(new Date(entry.created_at), { start: weekStart, end: weekEnd })
     );
-  }, [entries]);
+  }, [entries, weekStart, weekEnd]);
 
   // Use current week entries for insights
-  const { insights, loading: insightsLoading } = useInsights(currentWeekEntries, profile?.display_name || undefined);
+  const { insights, loading:  insightsLoading } = useInsights(currentWeekEntries, profile?. display_name || undefined);
 
   // Sync completed weeks 
   useEffect(() => {
@@ -58,7 +65,6 @@ export function Dashboard() {
   // Calculate weekly data for line chart
   const weeklyData = useMemo(() => {
     const now = new Date();
-    const weekStart = startOfWeek(now, { weekStartsOn: 0 }); // Sunday
     const days = [];
 
     for (let i = 0; i < 7; i++) {
@@ -66,9 +72,9 @@ export function Dashboard() {
       date.setDate(weekStart.getDate() + i);
       const dayStart = startOfDay(date);
       const dayEnd = new Date(dayStart);
-      dayEnd.setHours(23, 59, 59, 999);
+      dayEnd. setHours(23, 59, 59, 999);
 
-      const dayEntries = currentWeekEntries. filter(entry =>
+      const dayEntries = currentWeekEntries.filter(entry =>
         isWithinInterval(new Date(entry.created_at), { start: dayStart, end: dayEnd })
       );
 
@@ -86,12 +92,12 @@ export function Dashboard() {
       });
     }
     return days;
-  }, [currentWeekEntries]);
+  }, [currentWeekEntries, weekStart]);
 
   const handleAnalyze = async () => {
     try {
       const result = await analyzeAllEntries();
-      alert(`Analyzed ${result.analyzed} entries!  🦋`);
+      alert(`Analyzed ${result. analyzed} entries!  🦋`);
       refresh();
     } catch (error) {
       console.error('Analysis failed:', error);
@@ -126,25 +132,33 @@ export function Dashboard() {
     return trend. charAt(0).toUpperCase() + trend.slice(1);
   };
 
- 
+  // Week navigation
+  const goToPreviousWeek = () => setWeekOffset(weekOffset - 1);
+  const goToNextWeek = () => {
+    if (weekOffset < 0) setWeekOffset(weekOffset + 1);
+  };
+
+  const getWeekTitle = () => {
+    if (weekOffset === 0) return 'This Week';
+    if (weekOffset === -1) return 'Last Week';
+    return `${Math.abs(weekOffset)} Weeks Ago`;
+  };
+
   const weekRangeLabel = useMemo(() => {
-    const now = new Date();
-    const weekStart = startOfWeek(now, { weekStartsOn: 0 });
-    const weekEnd = endOfWeek(now, { weekStartsOn: 0 });
     return `${format(weekStart, 'MMM d')} - ${format(weekEnd, 'MMM d')}`;
-  }, []);
+  }, [weekStart, weekEnd]);
 
   return (
     <div className={styles.container}>
       {/* Header */}
       <div className={styles.header}>
         <div>
-          <h1 className={styles.title}>Insights</h1>
+          <h1 className={styles. title}>Insights</h1>
         </div>
         <button
           onClick={handleAnalyze}
           disabled={analyzing}
-          className={styles. analyzeButton}
+          className={styles.analyzeButton}
         >
           {analyzing ? 'Analyzing...' : 'Analyze'}
         </button>
@@ -152,12 +166,12 @@ export function Dashboard() {
 
       {/* Analysis Progress */}
       {analyzing && (
-        <div className={styles. card}>
+        <div className={styles.card}>
           <p>Analyzing your entries with Claude...</p>
           <div className={styles.progressBar}>
             <div
-              className={styles.progressFill}
-              style={{ width: `${(progress. current / progress.total) * 100}%` }}
+              className={styles. progressFill}
+              style={{ width:  `${(progress. current / progress.total) * 100}%` }}
             />
           </div>
           <p className={styles.progressText}>
@@ -178,26 +192,46 @@ export function Dashboard() {
         <ButterflyTree completedWeeks={completedWeeks} />
       </div>
 
+      {/* Week Navigation */}
+      <div className={styles.weekNav}>
+        <button
+          className={styles.navArrow}
+          onClick={goToPreviousWeek}
+          aria-label="Previous week"
+        >
+          <ChevronLeft size={24} />
+        </button>
+
+        <div className={styles.weekTitleContainer}>
+          <h2 className={styles.weekTitle}>{getWeekTitle()}</h2>
+          <p className={styles.weekLabel}>{weekRangeLabel}</p>
+        </div>
+
+        <button
+          className={styles. navArrow}
+          onClick={goToNextWeek}
+          disabled={weekOffset >= 0}
+          aria-label="Next week"
+        >
+          <ChevronRight size={24} />
+        </button>
+      </div>
+
       {/* Current week content */}
-      {currentWeekEntries.length === 0 ? (
+      {currentWeekEntries.length === 0 ?  (
         <div className={styles.card}>
           <div className={styles.emptyState}>
             <div className={styles.emptyIcon}>📝</div>
-            <p className={styles.emptyText}>No entries this week yet</p>
+            <p className={styles.emptyText}>No entries this week</p>
             <p className={styles.emptySubtext}>
-              Start journaling to see your weekly insights!
+              {weekOffset === 0 
+                ? 'Start journaling to see your weekly insights!' 
+                :  'No entries were recorded during this week. '}
             </p>
           </div>
         </div>
       ) : (
-        
         <>
-        <div className={styles.subHeader}>
-        <div>
-          <h1 className={styles.weekTitle}>This Week</h1>
-          <p className={styles.weekLabel}>{weekRangeLabel}</p>
-        </div>
-      </div>
           {/* Average Mood - CURRENT WEEK */}
           {sentimentStats && (
             <div className={styles.card}>
@@ -265,7 +299,7 @@ export function Dashboard() {
                 {/* Mood Trend Badge */}
                 <div className={`${styles.moodTrendBadge} ${styles[insights.moodTrend]}`}>
                   {getTrendIcon(insights. moodTrend)}
-                  <span>{getTrendLabel(insights.moodTrend)}</span>
+                  <span>{getTrendLabel(insights. moodTrend)}</span>
                 </div>
 
                 {/* Summary */}
@@ -287,11 +321,11 @@ export function Dashboard() {
             ) : null}
           </div>
 
-          {/* Weekly Line Chart - CURRENT WEEK (Sun-Sat) */}
+          {/* Weekly Line Chart */}
           <div className={styles.card}>
             <div className={styles.cardTitle}>
               <Sparkles size={18} />
-              This Week's Journey
+              {weekOffset === 0 ?  "This Week's Journey" : "Weekly Journey"}
             </div>
             <WeeklyMoodChart data={weeklyData} />
           </div>

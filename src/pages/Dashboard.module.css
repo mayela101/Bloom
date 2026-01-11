@@ -365,3 +365,49 @@
   font-weight: 700;
   color:  #1f2937;
 }
+
+/* Week Navigation */
+.weekNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0. 5rem 0;
+}
+
+.navArrow {
+  background:  rgba(255, 255, 255, 0.8);
+  border: 1px solid var(--lavender);
+  border-radius: 50%;
+  width:  44px;
+  height: 44px;
+  cursor: pointer;
+  display: flex;
+  align-items:  center;
+  justify-content: center;
+  transition: all 0.2s;
+  color: #374151;
+}
+
+.navArrow:hover:not(:disabled) {
+  background: var(--sage);
+  color: white;
+  border-color: var(--sage);
+}
+
+.navArrow:disabled {
+  opacity: 0.3;
+  cursor:  not-allowed;
+}
+
+.weekTitleContainer {
+  text-align: center;
+}
+
+.weekTitleContainer.weekTitle {
+  margin:  0;
+  font-size: 1.5rem;
+}
+
+.weekTitleContainer.weekLabel {
+  margin: 0.25rem 0 0;
+}
