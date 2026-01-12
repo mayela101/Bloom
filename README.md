@@ -6,9 +6,9 @@ It combines guided prompts, lightweight AI analysis, and visual progress metapho
 
 ## Demo & Deliverables
 
-Demo Video: [https://youtu.be/Pbt56MTIQxw]
-Live Prototype: [https://bloom-flame.vercel.app/]
-Design Documentation: [https://docs.google.com/document/d/1XldGKrPTC3QhpYwHZy3bAoyYz75OjhHKM84eluL2Too/edit?usp=sharing]
+- Demo Video: [https://youtu.be/Pbt56MTIQxw]
+- Live Prototype: [https://bloom-flame.vercel.app/]
+- Design Documentation: [https://docs.google.com/document/d/1XldGKrPTC3QhpYwHZy3bAoyYz75OjhHKM84eluL2Too/edit?usp=sharing]
 
 ## Core Features
 
