@@ -1,73 +1,80 @@
-# React + TypeScript + Vite
+# Bloom 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Bloom is a private, AI-assisted journaling companion designed to reduce blank-page anxiety and help users reflect on emotional patterns over time. 
 
-Currently, two official plugins are available:
+It combines guided prompts, lightweight AI analysis, and visual progress metaphors to make journaling a consistent and supportive daily habit.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Demo & Deliverables
 
-## React Compiler
+Demo Video: [https://youtu.be/Pbt56MTIQxw]
+Live Prototype: [https://bloom-flame.vercel.app/]
+Design Documentation: [https://docs.google.com/document/d/1XldGKrPTC3QhpYwHZy3bAoyYz75OjhHKM84eluL2Too/edit?usp=sharing]
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Core Features
 
-## Expanding the ESLint configuration
+- Guided journaling with optional mood tagging  
+- Context-aware AI-generated prompts  
+- Weekly emotional insights dashboard  
+- Progress visualization using a butterfly growth metaphor  
+- Local fallback analysis when AI services are unavailable  
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Tech Stack
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+**Frontend**
+- React + TypeScript (Vite / Next.js)
+- CSS Modules
+- Recharts, Framer Motion
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+**Backend & Database**
+- Supabase (PostgreSQL, Auth, RLS)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+**AI**
+- Claude (Anthropic API)
+- Local heuristic fallback analysis
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+**Deployment**
+- Vercel
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## AI Usage
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Bloom uses AI in two distinct ways:
+
+**1. Product Functionality**
+- Generates empathetic journaling prompts
+- Summarizes emotional trends over time
+- Clearly labels AI-generated insights and provides user control
+
+**2. AI-Assisted Development**
+- Used AI tools to iterate on prompt phrasing and UX copy
+- Prototyped UI components and animations from hand-drawn sketches
+- Accelerated development through scaffolding and edge-case checks
+
+AI was used as a productivity multiplier, while all architectural decisions and system design remained human-led.
+
+## Responsible AI & Privacy
+
+- All journal entries are private by default
+- Row-Level Security enforces per-user data isolation
+- No user data is used for model training
+- Bloom does not provide medical or diagnostic advice
+
+## Design Documentation
+
+For detailed design decisions, AI architecture, UX rationale, and tradeoffs, see:
+
+📘 `DOCUMENTATION.md`
+Early design sketches and iteration notes are included to illustrate the design process.
+
+## Running Locally
+
+npm install
+npm run dev
+
+Note: This project was developed for demonstration purposes and may require environment setup to run locally.
+Live Site is found above.
+
+## Project Context
+
+Bloom was built as part of a time-boxed interview hackathon. Feature scope and design decisions were intentionally constrained to prioritize core user value, privacy, and reliability.
+
+
